@@ -1,0 +1,154 @@
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+								Date Picker
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ 							driver.get("http://seleniumpractise.blogspot.in/2016/08/how-to-handle-calendar-in-selenium.html");
+								
+								driver.findElement(By.id("datepicker")).click();
+											
+								List<WebElement> allDates=driver.findElements(By.xpath("//table[@class='ui-datepicker-calendar']//td"));
+								
+								for(WebElement ele:allDates)
+								{
+									
+									String date=ele.getText();
+									
+									if(date.equalsIgnoreCase("28"))
+									{
+										ele.click();
+										break;
+									}
+									
+								}
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+								Date Picker +Calender  Using JavaScript
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+					driver.get("http://spicejet.com/"); // enter URL
+				
+				WebElement date = driver.findElement(By.id("ctl00_mainContent_txt_Fromdate"));
+				String dateVal = "30-12-2017";
+				
+				selectDateByJS(driver, date, dateVal);
+				
+			
+			
+			
+			public static void selectDateByJS(WebDriver driver, WebElement element, String dateVal){
+		    	JavascriptExecutor js = ((JavascriptExecutor) driver);
+				js.executeScript("arguments[0].setAttribute('value','"+dateVal+"');", element);
+				
+			}
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+									Date Picker
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+				                driver.get("https://www.path2usa.com/travel-companions");
+                
+              //April 23
+            WebElement elee= driver.findElement(By.xpath(".//*[@id='travel_date']"));
+            elee.click();
+
+
+              while(!driver.findElement(By.cssSelector("[class='datepicker-days'] [class='datepicker-switch']")).getText().contains("May"))
+              {
+              driver.findElement(By.cssSelector("[class='datepicker-days'] th[class='next']")).click();
+              }
+
+
+              List<WebElement> dates= driver.findElements(By.className("day"));
+              //Grab common attribute//Put into list and iterate
+              int count=driver.findElements(By.className("day")).size();
+
+              for(int i=0;i<count;i++)
+              {
+              String text=driver.findElements(By.className("day")).get(i).getText();
+              if(text.equalsIgnoreCase("21"))
+              {
+              driver.findElements(By.className("day")).get(i).click();
+              break;
+              }
+
+              }
+              }
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+								Date Picker +Calender
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	// import org.openqa.selenium.support.ui.Select;
+				
+				
+				System.setProperty("webdriver.chrome.driver", "D:\\Selenium-Drivers\\Rj\\chromedriver.exe\\");
+                WebDriver driver = new ChromeDriver();
+                driver.manage().window().maximize();
+			
+				driver.get("https://www.freecrm.com/"); // enter URL
+				
+				driver.findElement(By.name("username")).sendKeys("naveenk");
+				driver.findElement(By.name("password")).sendKeys("test@123");
+				Thread.sleep(3000);
+				driver.findElement(By.xpath("//input[@type='submit']")).click(); //login button
+				
+				driver.switchTo().frame("mainpanel");
+				
+				String date = "32-May-2017";
+				String dateArr[] = date.split("-"); // {18,September,2017}
+				String day = dateArr[0];
+				String month = dateArr[1];
+				String year = dateArr[2];
+				
+
+
+			
+				
+				Select se = new Select(driver.findElement(By.name("slctMonth")));
+				se.selectByVisibleText(month);
+				
+				Select se1 = new Select(driver.findElement(By.name("slctYear")));
+				se1.selectByVisibleText(year);
+				
+				//*[@id='crmcalendar']/table/tbody/tr[2]/td/table/tbody/tr[2]/td[1]
+				//*[@id='crmcalendar']/table/tbody/tr[2]/td/table/tbody/tr[2]/td[2]	
+				//*[@id='crmcalendar']/table/tbody/tr[2]/td/table/tbody/tr[2]/td[6]
+				
+				String beforeXpath = "//*[@id='crmcalendar']/table/tbody/tr[2]/td/table/tbody/tr[";
+				String afterXpath = "]/td[";
+				
+				final int totalWeekDays = 7;
+				
+				//2-1 2-2 2-3 2-4 2-5 2-6 2-7
+				//3-2 3-2 3-3 3-4 3-5 3-6 3-7
+				boolean flag = false;
+				String dayVal = null;
+				for(int rowNum=2; rowNum<=7; rowNum++){
+					
+					for(int colNum = 1; colNum<=totalWeekDays; colNum++){
+						try{
+					    dayVal =driver.findElement(By.xpath(beforeXpath+rowNum+afterXpath+colNum+"]")).getText();
+						}catch (NoSuchElementException e){
+							System.out.println("Please enter a correct date value");
+							flag = false;
+							break;
+						}
+						System.out.println(dayVal);
+						if(dayVal.equals(day)){
+							driver.findElement(By.xpath(beforeXpath+rowNum+afterXpath+colNum+"]")).click();
+							flag = true;
+							break;
+						}				
+					}
+					if(flag){
+						break;
+					}
+					
+				}
+	        
+	        
+	        

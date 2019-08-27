@@ -1,0 +1,60 @@
+
+
+
+
+import java.util.ArrayList;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+
+
+
+
+
+public class Experiment 
+{
+
+
+	public static void main(String[] args) throws InterruptedException 
+	{
+		 //  FireFox
+		 //  System.setProperty("webdriver.firefox.marionette","false");
+		
+		 //  Chrome
+		
+		 System.setProperty("webdriver.chrome.driver","D:/Selenium-Drivers/ChromeDriver/chromedriver.exe"); 
+		 WebDriver driver = new ChromeDriver ();
+		 driver.manage().window().maximize();
+		 driver.get("http://www.uitestpractice.com/Students/Switchto");
+		 
+		 
+		 driver.findElement(By.id("prompt")).click();
+		 Thread.sleep(2000);
+		 
+		 Alert alert = driver.switchTo().alert();
+		 alert.sendKeys("Jay Mataji");
+		 Thread.sleep(250000);;
+		 alert.accept();
+		 System.out.println(alert.getText());
+		 Thread.sleep(8000);
+		 
+		 
+		 driver.close();
+		 driver.quit();
+		 
+	// alert.dismiss();
+		 
+
+		 
+		 
+     
+		
+
+	}
+
+}

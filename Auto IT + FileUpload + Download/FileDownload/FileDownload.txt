@@ -1,0 +1,25 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+								Download  Files Using AutoIT
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+InetGet  - Downloads The Files from the Internet using HTTP, HTTPS,  and FTP protocol
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+#include<InetConstants.au3>
+#include<MsgBoxConstants.au3>
+
+;Download a file in the background.
+; gait for the download to complete.
+
+
+Example()
+Func Example()
+	; Download the file by waiting for it to complete. The option of 'get the file from the local cache' has been selected.
+Local $iBytesSize = InetGet("http://selenium-release.storage.googleapis.com/3.0/IEDriverServer_x64_3.0.0.zip","D:\Test\IEDriver.zip",$INET_FORCERELOAD)
+
+EndFunc

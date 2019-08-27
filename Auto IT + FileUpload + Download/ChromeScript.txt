@@ -1,0 +1,3 @@
+ControlFocus("Open","","Edit1")
+ControlSetText("Open","","Edit1","C:\Users\RUSHIT  PATEL\Downloads\Learn\Java-Selenium\General\FileUpload\fup.txt")
+ControlClick("Open","","Button1")

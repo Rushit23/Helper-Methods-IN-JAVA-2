@@ -1,0 +1,47 @@
+
+ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+							 Automating The Barcode
+ --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ ZXing javase  Download the jar files
+
+ https://jar-download.com/?search_box=zxing-javase-3.4.0
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+https://mvnrepository.com/artifact/com.google.zxing/javase/3.4.0
+
+<!-- https://mvnrepository.com/artifact/com.google.zxing/javase -->
+<dependency>
+    <groupId>com.google.zxing</groupId>
+    <artifactId>javase</artifactId>
+    <version>3.4.0</version>
+</dependency>
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+							// Automate The Barcode 
+		
+		
+		// String barCodeURL = driver.findElement(By.tagName("img")).getAttribute("src");
+				// AutomateBarcode(driver,barCodeURL);
+		
+		
+		public static String AutomateBarcode(WebDriver driver,String barcodeurl)
+				throws MalformedURLException, IOException, NotFoundException
+			{
+
+				
+				 
+				 System.out.println(barcodeurl);
+				 
+				 URL url = new URL(barcodeurl);
+				 
+				 BufferedImage bufferedImage = ImageIO.read(url);
+				 
+				 LuminanceSource luminanceSource = new BufferedImageLuminanceSource(bufferedImage);
+				 BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(luminanceSource));
+				 
+				 Result result = new MultiFormatReader().decode(binaryBitmap);
+				 
+				 return result.getText();
+			}
+		
+
+

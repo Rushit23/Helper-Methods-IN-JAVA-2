@@ -1,0 +1,82 @@
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+								Explicit Wait
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+wait till specific or set of elements are not loaded.
+
+WebDriverWait wait=new WebDriverWait(driver,20);
+ 
+ 
+ 
+// Wait till the element is not visible
+ 
+WebElement element=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("ur xpath here")));
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+								Implicit Wait
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Implicit wait– It only checks the presence of element on WebPage that’s all if elements are hidden or any other condition then it will not handle and it will fail your script.
+
+Implicit wait in selenium webdriver will be applicable throughout your script and will works on all element in the script once your specified implicit wait.
+
+It is applicable for all the element after initialization.
+
+
+
+
+driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+								Fluent Wait
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+http://learn-automation.com/fluentwait-in-selenium-webdriver/
+
+
+
+
+
+When you perform the complex operation on any application it also takes some time for processing and we have to make sure our script should wait until specific conditions are not true.
+
+
+
+
+Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+ 
+       .withTimeout(60, SECONDS)
+ 
+       .pollingEvery(2, SECONDS)
+ 
+       .ignoring(NoSuchElementException.class);
+ 
+ 
+ 
+   WebElement foo = wait.until(new Function<WebDriver, WebElement>() {
+ 
+     public WebElement apply(WebDriver driver) {
+ 
+       return driver.findElement(By.id("foo"));
+ 
+     }
+ 
+   });
